@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鱿鱼行情助手 · 企微里的卖货参谋</title>
+<style>
+  :root{
+    --primary:#1441a8;
+    --primary-dk:#0f3185;
+    --blue-50:#eff6ff;
+    --blue-100:#dbeafe;
+    --bg:#f9fafb;
+    --card:#ffffff;
+    --ink:#0f172a;
+    --ink-2:#334155;
+    --ink-3:#64748b;
+    --line:#e8edf3;
+    --ok:#059669;
+    --squid:#e8590c;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;font-size:16px}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  section{padding:84px 0}
+  h2{font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+  h3{font-size:18px;font-weight:700}
+  p{color:var(--ink-2)}
+
+  /* ===== 顶部导航 ===== */
+  .topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:17px}
+  .brand-avatar{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#1a54c4,#0f3185);color:#fff;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;flex:none}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font-size:15px;font-weight:600;border-radius:10px;padding:10px 22px;cursor:pointer;text-decoration:none;transition:.15s;border:none}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{background:var(--primary-dk)}
+  .btn-sm{padding:7px 16px;font-size:14px}
+
+  /* ===== Hero ===== */
+  .hero{background:linear-gradient(180deg,#f3f7ff 0%,var(--bg) 100%);padding:84px 0 92px;position:relative}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,460px);gap:64px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--blue-100);color:var(--primary);font-size:13.5px;font-weight:600;padding:6px 14px;border-radius:999px;margin-bottom:22px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);flex:none}
+  .hero h1{font-size:46px;font-weight:900;line-height:1.22;letter-spacing:-.025em;margin-bottom:18px}
+  .hero h1 em{font-style:normal;color:var(--primary)}
+  .hero .sub{font-size:17.5px;color:var(--ink-2);margin-bottom:30px;max-width:520px}
+  .hero-features{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+  .hf{display:flex;gap:10px;align-items:center;font-size:15.5px;color:var(--ink-2)}
+  .hf b{color:var(--ink)}
+  .hf-ic{width:22px;height:22px;color:var(--primary);flex:none;display:flex;align-items:center;justify-content:center}
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:36px;margin-top:34px}
+  .hs b{font-size:24px;font-weight:800;color:var(--ink)}
+  .hs span{display:block;font-size:13px;color:var(--ink-3)}
+  .btn-ghost{background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+  .btn-ghost:hover{border-color:var(--primary);color:var(--primary)}
+
+  /* Hero 右侧聊天卡 */
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 1px 2px rgba(15,23,42,.04),0 12px 32px rgba(15,23,42,.05)}
+  .chat-card{display:flex;flex-direction:column;overflow:hidden}
+  .chat-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);background:#fbfcfe}
+  .chat-head .av{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,#1a54c4,#0f3185);color:#fff;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;flex:none}
+  .chat-head .nm{font-weight:700;font-size:15.5px}
+  .chat-head .st{font-size:12.5px;color:var(--ok);display:flex;align-items:center;gap:5px}
+  .chat-head .st i{width:6px;height:6px;border-radius:50%;background:var(--ok);display:inline-block}
+  .chat-body{padding:20px 18px;display:flex;flex-direction:column;gap:14px;background:#fff}
+  .msg{display:flex;gap:10px;max-width:92%}
+  .msg .av{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,#1a54c4,#0f3185);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;flex:none;margin-top:2px}
+  .msg.user{align-self:flex-end;flex-direction:row-reverse}
+  .bub{padding:10px 14px;border-radius:12px;font-size:14.5px;line-height:1.65}
+  .msg.bot .bub{background:#f4f6f9;color:var(--ink);border-top-left-radius:4px}
+  .msg.user .bub{background:var(--primary);color:#fff;border-top-right-radius:4px}
+  .bub b{font-weight:700}
+  .chat-foot{padding:12px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#fbfcfe}
+  .chat-foot span{font-size:13px;color:var(--ink-3)}
+
+  /* ===== 区块标题 ===== */
+  .sec-head{margin-bottom:40px;max-width:640px}
+  .sec-label{display:inline-block;font-size:13px;font-weight:700;color:var(--primary);background:var(--blue-50);padding:4px 12px;border-radius:6px;margin-bottom:12px}
+  .sec-head p{margin-top:12px;font-size:15.5px}
+
+  /* ===== 场景 Tabs ===== */
+  #tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+  .tab{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 18px;font-size:15px;font-weight:600;color:var(--ink-2);cursor:pointer;transition:.15s;font-family:inherit}
+  .tab:hover{border-color:var(--primary);color:var(--primary)}
+  .tab.on{background:var(--primary);border-color:var(--primary);color:#fff}
+  .scene{display:none}
+  .scene.on{display:grid}
+  .scene-grid{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:28px;align-items:stretch}
+  .scene-note{padding:26px 26px 22px;display:flex;flex-direction:column;gap:14px}
+  .scene-note h3{font-size:19px}
+  .scene-note .desc{font-size:14.5px;color:var(--ink-2)}
+  .scene-note .ctx{display:flex;gap:8px;align-items:flex-start;font-size:13px;color:var(--ink-3);background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:10px 14px}
+  .scene-note .steps{display:flex;flex-direction:column;gap:9px;margin-top:auto}
+  .step{display:flex;gap:10px;font-size:14px;color:var(--ink-2)}
+  .step i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--blue-50);color:var(--primary);font-size:12.5px;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none;margin-top:3px}
+  .scene-chat{padding:0;overflow:hidden;display:flex;flex-direction:column}
+  .scene-chat .chat-body{background:#fff;padding:24px 22px;gap:16px}
+  .scene-chat .chat-body .msg{max-width:88%}
+  .scene-chat .chat-head{background:#fbfcfe}
+  /* 助手回复里的普通引用块——唯一保留的轻强调 */
+  .quote{background:#fff;border-left:3px solid var(--primary);padding:8px 12px;border-radius:0 8px 8px 0;margin:8px 0 2px;font-size:13.5px;color:var(--ink-2)}
+  .quote b{color:var(--primary)}
+  .typing{font-size:13px;color:var(--ink-3);display:flex;align-items:center;gap:6px;padding-left:44px}
+  .typing i{width:6px;height:6px;border-radius:50%;background:#c4ccd8;display:inline-block;animation:blink 1.2s infinite}
+  .typing i:nth-child(2){animation-delay:.2s}
+  .typing i:nth-child(3){animation-delay:.4s}
+  @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+
+  /* ===== 核心价值 ===== */
+  .value-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+  .value-card{padding:30px}
+  .value-card .ic{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+  .ic-blue{background:var(--blue-50);color:var(--primary)}
+  .ic-orange{background:var(--squid-bg,#fff4ed);color:var(--squid)}
+  .value-card p{font-size:14.5px;margin-top:8px}
+  .value-card ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:7px}
+  .value-card li{font-size:14px;color:var(--ink-2);padding-left:18px;position:relative}
+  .value-card li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--primary);position:absolute;left:2px;top:11px}
+
+  /* ===== 一天时间轴 ===== */
+  .day-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .day-card{padding:22px}
+  .day-card .t{font-size:12.5px;font-weight:700;color:var(--primary);letter-spacing:.05em}
+  .day-card h3{margin:6px 0 8px;font-size:16px}
+  .day-card p{font-size:13.5px}
+
+  /* ===== 架构 ===== */
+  .arch{padding:8px}
+  .layer{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:18px 22px;border-bottom:1px solid var(--line);align-items:center}
+  .layer:last-child{border-bottom:none}
+  .layer .ln{font-weight:800;font-size:15.5px}
+  .layer .ln span{display:block;font-weight:400;font-size:12.5px;color:var(--ink-3)}
+  .layer p{font-size:14px}
+  .arch-note{padding:16px 24px;border-top:1px solid var(--line);background:#fbfcfe;font-size:13px;color:var(--ink-3);border-radius:0 0 16px 16px}
+
+  
+
+  /* ===== CTA ===== */
+  .cta{background:linear-gradient(135deg,#0f3185 0%,#1441a8 60%,#1a54c4 100%);border-radius:20px;padding:64px 48px;text-align:center;color:#fff}
+  .cta h2{color:#fff;font-size:30px}
+  .cta p{color:rgba(255,255,255,.82);margin:14px 0 30px;font-size:16px}
+  .cta-btn{display:inline-block;background:#fff;color:var(--primary-dk);font-weight:700;font-size:16.5px;padding:14px 38px;border-radius:12px;text-decoration:none;transition:.15s}
+  .cta-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(0,0,0,.18)}
+  .cta-note{margin-top:18px;font-size:13.5px;color:rgba(255,255,255,.65)}
+
+  footer{text-align:center;padding:40px 20px;font-size:13px;color:var(--ink-3);border-top:1px solid var(--line)}
+
+  /* 渐显 */
+  .reve{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reve.in{opacity:1;transform:none}
+
+  /* ===== 响应式 ===== */
+  @media(max-width:960px){
+    .hero-grid{grid-template-columns:minmax(0,1fr);gap:48px}
+    .hero h1{font-size:36px}
+    .scene-grid{grid-template-columns:minmax(0,1fr)}
+    .value-grid{grid-template-columns:minmax(0,1fr)}
+    .day-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+        .layer{grid-template-columns:minmax(0,1fr);gap:6px}
+    .cta{padding:48px 28px}
+    section{padding:64px 0}
+  }
+  @media(max-width:560px){
+    .hero-stats{gap:22px}
+    .hero h1{font-size:30px}
+    .day-grid{grid-template-columns:minmax(0,1fr)}
+    h2{font-size:26px}
+    .scene-chat .chat-body .msg{max-width:94%}
+    .chat-foot{flex-direction:column;gap:6px;align-items:flex-start}
+  }
+</style>
+</head>
+<body>
+
+<!-- 顶部导航 -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><div class="brand-avatar">鱿</div>鱿鱼行情助手</div>
+    <a class="btn btn-primary btn-sm" href="#demo">申请试用</a>
+  </div>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="badge"><span class="dot"></span>企微里的专属行情参谋 · 已对接 50+ 产业者</div>
+      <h1>鱿鱼行情，<em>一句话</em>的事</h1>
+      <p class="sub">不用再翻几十个群、私聊问价。行情查询、供需登记、撮合匹配，全部在聊天框里完成——你只管谈生意，跑腿的事交给助手。</p>
+      <div class="hero-features">
+        <div class="hf"><span class="hf-ic">◆</span><span><b>即时行情</b>：规格价格、船号、到港动态，3 秒回复</span></div>
+        <div class="hf"><span class="hf-ic">◆</span><span><b>供需登记</b>：随口一句需求或货盘，自动结构化入库</span></div>
+        <div class="hf"><span class="hf-ic">◆</span><span><b>撮合推送</b>：匹配买家/卖家后主动私信，双方确认再对接</span></div>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#demo">申请试用</a>
+        <a class="btn btn-ghost" href="#value">了解它是怎么工作的</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hs"><b>50+</b><span>已对接产业者</span></div>
+        <div class="hs"><b>实时</b><span>行情数据更新</span></div>
+        <div class="hs"><b>&lt;3s</b><span>平均响应时间</span></div>
+      </div>
+    </div>
+    <div class="card chat-card">
+      <div class="chat-head">
+        <div class="av">鱿</div>
+        <div>
+          <div class="nm">鱿鱼行情助手</div>
+          <div class="st"><i></i>在线</div>
+        </div>
+      </div>
+      <div class="chat-body">
+        <div class="msg user"><div class="bub">300-400g 原条现在什么价？</div></div>
+        <div class="msg bot"><div class="av">鱿</div><div class="bub">赤道原条 300-400g 当前 <b>***元/吨</b>，与上周基本持平，短期价格偏稳。今明两天到港 2 条船。</div></div>
+        <div class="msg user"><div class="bub">200-300g 呢？</div></div>
+        <div class="msg bot"><div class="av">鱿</div><div class="bub">200-300g 当前 <b>***元/吨</b>，小规格走货偏慢，采购端议价空间稍大。</div></div>
+      </div>
+      <div class="chat-foot"><span>私聊 · 企业微信</span><span>3 秒内响应</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 场景演示 ================= -->
+<section id="demo">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">使用场景</div>
+      <h2>用起来就像这样</h2>
+      <p>五个真实场景，点开看看助手怎么回话。</p>
+    </div>
+
+    <div id="tabs">
+      <button class="tab on" data-s="s1">① 查行情</button>
+      <button class="tab" data-s="s2">② 报需求</button>
+      <button class="tab" data-s="s3">③ 发货盘</button>
+      <button class="tab" data-s="s4">④ 撮合通知</button>
+      <button class="tab" data-s="s5">⑤ 每日早报</button>
+    </div>
+
+    <!-- 场景1：查行情 -->
+    <div class="scene on" id="s1">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>问行情、问走势、问库存怎么办，都答得上来</h3>
+          <div class="desc">不只报个价：历史走势、市场判断、库存去留建议张口就来，像个天天盯盘的老业务。</div>
+          <div class="ctx">背景：私聊助手，业务员自己的库存决策</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>口语化提问，随口一问就行</span></div>
+            <div class="step"><i>2</i><span>当前价 + 历史走势 + 判断一次给全</span></div>
+            <div class="step"><i>3</i><span>库存去留帮你算笔账，主意自己拿</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">鱿</div>
+            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg user"><div class="bub">赤道小小最近什么行情？去年到现在什么走势，手上有点库存，要不要动？</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">赤道小小 100-300 现在 <b>***元/吨</b>，跟上周比基本没动，横盘状态。<br>走势：去年下半年一度冲高（当时到港少、需求旺），今年上半年逐步回落，最近两个月窄幅震荡，没大起大落。<br>库存：现在比去年高点低了一截，但比上半年低点也有回弹；目前走量不快、买方观望，成交偏清淡。怎么处理得看你的资金成本和回款节奏，主意你自己拿。</div></div>
+            <div class="msg user"><div class="bub">我有 100 吨在冷库，上个月初到的，值不值得再等等？</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">100 吨、到库一个月，帮你算笔持货账：冷库租金按 50-60 元/吨/月，一个月 5-6 千；出入库叉车费约 8 千；货款若是拆借的，利息约 1.5 万——合计每月持货成本约 3 万，再等就是每月多烧这些钱。<br>横盘行情往上要等需求回暖或到港减少，往下有支撑。扛不扛得住，你自己算算账。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景2：报需求 -->
+    <div class="scene" id="s2">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>客户要货，私聊里一句，助手全圈子帮你找</h3>
+          <div class="desc">说出规格数量，助手马上告诉你有多少卖家能接、几个人有意向。</div>
+          <div class="ctx">背景：私聊助手，替客户找货</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>一句口语化描述，自动登记需求</span></div>
+            <div class="step"><i>2</i><span>匹配引擎扫描全部已登记货源</span></div>
+            <div class="step"><i>3</i><span>有报价直接回你，你挑合适的转给客户</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">鱿</div>
+            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg user"><div class="bub">需要 500g+ 阿根廷鱿鱼筒，5 吨</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">已登记采购需求：阿根廷鱿鱼筒 500g+ × 5 吨，正在匹配已登记货源——<div class="quote">匹配到 <b>11 位</b>有对应规格的卖家，已逐个通知；目前 <b>4 位</b>回复初步有意向，正在等他们报价。</div>有报价我会第一时间转你。</div></div>
+            <div class="msg user"><div class="bub">行，报价了跟我说</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">好的。需求已挂 72 小时，期间匹配到新货源会主动通知你，不用再问一遍。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景3：发货盘 -->
+    <div class="scene" id="s3">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>你吐露卖货需求，助手告诉你触达了多少人</h3>
+          <div class="desc">说出货盘，助手马上反馈通知了多少买家、几个人有意向，还会告诉你下一步该补什么。</div>
+          <div class="ctx">背景：私聊助手，发布货源</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>随口描述规格数量，登记货盘</span></div>
+            <div class="step"><i>2</i><span>助手定向通知匹配买家，回报意向数</span></div>
+            <div class="step"><i>3</i><span>补充照片等信息后，生成货盘卡片定向推送</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">鱿</div>
+            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg user"><div class="bub">我这里有一批阿根廷筒，500g+，5 吨左右，价格可谈</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">已登记货源：阿根廷鱿鱼筒 500g+ × 5 吨（价格待确认）。<div class="quote">已精准通知 <b>28 位</b>有对应采购需求的买家，目前 <b>6 位</b>初步有意向，其中 2 位询过价、1 位问船号。</div>接下来建议补充这几项，我好生成货盘卡片推给这 6 位意向买家：<br>① 货物照片 2-3 张（品相/规格）<br>② 船号或批次<br>③ 期望价格区间<br>④ 可交货时间</div></div>
+            <div class="msg user"><div class="bub">照片发你了，船号 58102，价格按行情来，周五前能交</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">收到，货盘卡片已生成并定向推送给 6 位意向买家。当前 500g+ 行情 ***元/吨，我会对照最新行情帮你把定价把关。有回复我会随时转你。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景4：撮合通知 -->
+    <div class="scene" id="s4">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>匹配上了，助手主动找你，双方确认才对接</h3>
+          <div class="desc">信息不公开挂群，双方都点头，才拉群或交换联系方式。</div>
+          <div class="ctx">背景：没主动找助手，它主动私信你</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>匹配引擎按规格、数量、时间打分</span></div>
+            <div class="step"><i>2</i><span>双向私信确认，信息互相保密</span></div>
+            <div class="step"><i>3</i><span>双方同意后拉群，进入正常谈价流程</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">鱿</div>
+            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊 · 主动通知</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">有一条和你货源匹配的供需信息：<br>500g+ 阿根廷筒 · 5 吨 · 本周交货，需求方来自另一个群的买家（信息保密）。<br>是否愿意对接？</div></div>
+            <div class="msg user"><div class="bub">对接</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">好的，已通知对方。对方也同意后，我会拉一个小群或交换联系方式，你们直接谈价格和细节。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 场景5：每日早报 -->
+    <div class="scene" id="s5">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>每天早上一条简报，行情心里有数</h3>
+          <div class="desc">价格变动、到港动态、热门规格，一条消息看完，不用爬楼翻群。</div>
+          <div class="ctx">背景：每天 8:00 定时推送</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>汇总上一日全部群的价格与供需信息</span></div>
+            <div class="step"><i>2</i><span>只推送和你关注的规格相关的变动</span></div>
+            <div class="step"><i>3</i><span>回复规格即可查详情</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">鱿</div>
+            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>定时推送 · 每日 8:00</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">早上好，今日鱿鱼行情简报：<br><b>价格变动</b>：400g+ 原条 ↑；300-400g 持平；200-300g ↓<br><b>到港动态</b>：今日 2 条船靠港（约 640 吨），400g+ 占比偏低<br><b>你关注的规格</b>：500g+ 阿根廷筒询盘增多，供应偏紧<br>回复规格名可查详细行情。</div></div>
+            <div class="msg user"><div class="bub">500g+</div></div>
+            <div class="msg bot"><div class="av">鱿</div><div class="bub">500g+ 阿根廷筒：当前 ***元/吨，近 7 日小幅上涨。近 3 日询盘 17 次、可查货源 4 批，供需偏紧，短期易涨难跌。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 核心价值 ================= -->
+<section id="value" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">核心价值</div>
+      <h2>就做两件事，都很实在</h2>
+    </div>
+    <div class="value-grid">
+      <div class="card value-card reve">
+        <div class="ic ic-blue">◆</div>
+        <h3>行情问答</h3>
+        <p>把散落在几十个群和私聊里的价格、船号、到港信息汇总成一句话答案。业务员张口就问，3 秒得到专业回复。</p>
+        <ul>
+          <li>规格价格即时查询，附近期成交参考</li>
+          <li>船号、批次、到港动态一问便知</li>
+          <li>趋势研判辅助报价决策</li>
+          <li>使用越多，答案越贴合本群行情</li>
+        </ul>
+      </div>
+      <div class="card value-card reve">
+        <div class="ic ic-orange">◆</div>
+        <h3>供需引擎</h3>
+        <p>业务员在正常聊天中随口提到需求和货盘，助手自动登记、双向匹配、确认后对接，撮合发生在你看得见的地方。</p>
+        <ul>
+          <li>需求与货盘自然语言提取，自动结构化</li>
+          <li>规格 + 数量 + 时间三维匹配</li>
+          <li>定向通知匹配方，回报意向数量</li>
+          <li>双方确认后才对接，信息不公开挂群</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 一天 ================= -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">使用路径</div>
+      <h2>业务员的一天</h2>
+    </div>
+    <div class="day-grid">
+      <div class="card day-card reve">
+        <div class="t">08:00</div>
+        <h3>早报</h3>
+        <p>一条简报看完昨日价格变动和到港动态，今天该报什么价心里有数。</p>
+      </div>
+      <div class="card day-card reve">
+        <div class="t">09:00-18:00</div>
+        <h3>查行情 · 报需求</h3>
+        <p>客户问价随手转给助手；客户要货随口一说，等助手带报价回来。</p>
+      </div>
+      <div class="card day-card reve">
+        <div class="t">随时</div>
+        <h3>发货盘</h3>
+        <p>有货要出？说出规格数量，助手通知匹配买家，回你意向名单。</p>
+      </div>
+      <div class="card day-card reve">
+        <div class="t">撮合时</div>
+        <h3>被动等通知</h3>
+        <p>匹配上了助手主动私信，双方确认拉群，你只管谈价。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 架构 ================= -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-label">产品架构</div>
+      <h2>三层架构，数据驱动</h2>
+    </div>
+    <div class="card arch reve">
+      <div class="layer">
+        <div class="ln">数据层<span>行情机器人已验证</span></div>
+        <p>企微机器人监听各业务群消息，7×24 小时采集、清洗价格与供需信息，输出结构化行情数据。</p>
+      </div>
+      <div class="layer">
+        <div class="ln">智能层<span>LLM 应用</span></div>
+        <p>自然语言理解（口语化行情查询、供需提取）+ RAG 行情问答 + 数据分析（价格趋势、供需密度、到港动态）。</p>
+      </div>
+      <div class="layer">
+        <div class="ln">应用层<span>业务员直接用</span></div>
+        <p>群聊@问答 · 私聊助手 · 每日简报 · 匹配推送 · 撮合对接，全部在企微聊天框里完成。</p>
+      </div>
+      <div class="arch-note">从行情问答开始就能用；供需登记、撮合推送随使用逐步开放——越早接入，行情答案越贴合你的圈子。</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta">
+      <h2>把翻几十个群问价的时间，省下来多谈几单生意</h2>
+      <p>首批体验名额开放中 · 接入 1-2 个业务员群 · 10 位业务员先行体验</p>
+      <a class="cta-btn" href="#demo">立即申请试用</a>
+      <div class="cta-note">在企微里找到鱿鱼行情助手，私聊或群里@它都行，从明天早上的第一份行情日报开始</div>
+    </div>
+  </div>
+</section>
+
+<footer>鱿鱼行情助手 · B2B 渔业业务员端 · 2026年9月 · 基于现有行情机器人数据基础设施</footer>
+
+<script>
+  var tabs = document.querySelectorAll('#tabs .tab');
+  var scenes = document.querySelectorAll('.scene');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){x.classList.remove('on')});
+      scenes.forEach(function(x){x.classList.remove('on')});
+      t.classList.add('on');
+      var el = document.getElementById(t.getAttribute('data-s'));
+      el.classList.add('on');
+      el.classList.add('in');
+    });
+  });
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:.08});
+  document.querySelectorAll('.reve, .cta').forEach(function(el){ el.classList.add('reve'); io.observe(el); });
+</script>
+</body>
+</html>
