@@ -145,12 +145,21 @@
   .concept-svg text{font-family:inherit}
   .flow{stroke-dasharray:10 7;animation:flowdash 1.1s linear infinite}
   @keyframes flowdash{to{stroke-dashoffset:-17}}
-  .backflow{stroke-dasharray:4 7}
+  .flow-in{stroke-dasharray:5 5;animation:flowdash2 1.2s linear infinite}
+  @keyframes flowdash2{to{stroke-dashoffset:-10}}
+  .concept-legend{display:flex;gap:10px 28px;flex-wrap:wrap;justify-content:center;margin-top:16px}
+  .lg{font-size:13px;color:var(--ink-2);display:inline-flex;align-items:center;gap:9px}
+  .lg i{display:inline-block}
+  .lg-in{width:32px;border-top:2.5px dashed #e8590c}
+  .lg-out{width:32px;border-top:3px solid #1441a8;position:relative}
+  .lg-out::after{content:"";position:absolute;right:-2px;top:-4.5px;width:0;height:0;border-left:7px solid #1441a8;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent}
   .concept-cap{font-size:13.5px;color:var(--ink-3);background:var(--bg);border:1px dashed var(--line);border-radius:10px;padding:12px 16px;margin-top:16px;line-height:1.7}
   @media(max-width:700px){
     .concept-d{display:none}
     .concept-m{display:block}
     .concept-stage{padding:20px 12px 16px}
+    .concept-legend{gap:8px 18px}
+    .lg{font-size:12px}
   }
 
   /* ===== CTA ===== */
@@ -245,98 +254,112 @@
     <div class="sec-head">
       <div class="sec-label">产品概念</div>
       <h2>一句报价，全圈子受益</h2>
-      <p>信息不再散落在几十个群里：任何人随口的一句话，经助手汇总、结构化、匹配，再精准送达每一个需要的人——你既是信息的源头，也是受益者。</p>
+      <p>任何人随口的一句话，AI 自动读懂、分析、撮合，再精准送达每一个需要的人——而每个人都只跟助手说话，谁也不用求谁。</p>
     </div>
     <div class="card concept-stage reve">
-      <!-- 桌面横版 -->
-      <svg class="concept-svg concept-d" viewBox="0 0 1000 500" role="img" aria-label="产品概念图：用户A把一句话行情报给鱿鱼行情助手，助手把行情答案、撮合通知、每日早报精准分发给用户B、用户C、用户N，他们的信息也回流进数据库">
+      <!-- 桌面横版：环绕闭环 -->
+      <svg class="concept-svg concept-d" viewBox="40 60 840 420" role="img" aria-label="产品概念图：用户A、B、C、N 围成一圈，各自只跟中间的AI行情助手相连——橙色虚线是每个人随口报的信息流进来，蓝色箭头是AI分析撮合后精准送达每个人。任何人想触达别人，都经过助手。">
         <defs>
           <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#1a54c4"/><stop offset="1" stop-color="#0f3185"/>
           </linearGradient>
           <marker id="arrb" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1441a8"/></marker>
           <marker id="arro" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#e8590c"/></marker>
-          <marker id="arrg" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#94a3b8"/></marker>
         </defs>
 
-        <!-- 信息回流（虚线） -->
-        <path class="backflow" d="M810,360 C660,472 300,472 178,258" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrg)"/>
-        <text x="500" y="488" text-anchor="middle" font-size="12.5" fill="#64748b">用户 B / C / N 报的行情同样回流 · 圈子越大，答案越准</text>
+        <!-- 信息流入：人人都只跟助手说一句话（橙色虚线） -->
+        <path class="flow-in" d="M188,176 Q285,250 395,269" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro)"/>
+        <path class="flow-in" d="M725,159 Q603,170 514,242" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro)"/>
+        <path class="flow-in" d="M725,401 Q603,390 514,318" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro)"/>
+        <path class="flow-in" d="M188,384 Q285,310 395,291" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro)"/>
 
-        <!-- 用户A：信息源头 -->
-        <circle cx="150" cy="215" r="46" fill="#fff4ed" stroke="#e8590c" stroke-width="2"/>
-        <text x="150" y="211" text-anchor="middle" font-size="16" font-weight="700" fill="#c2410c">用户A</text>
-        <text x="150" y="234" text-anchor="middle" font-size="11.5" fill="#64748b">报行情 · 发货盘</text>
+        <!-- AI 精准送达：从助手回到每个人（蓝色箭头） -->
+        <path class="flow" d="M406,242 Q300,175 195,158" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb)"/>
+        <path class="flow" d="M525,269 Q640,246 732,176" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb)"/>
+        <path class="flow" d="M525,291 Q640,314 732,384" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb)"/>
+        <path class="flow" d="M406,318 Q300,385 195,402" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb)"/>
 
-        <path class="flow" d="M200,215 L424,215" fill="none" stroke="#e8590c" stroke-width="2.5" marker-end="url(#arro)"/>
-        <text x="312" y="192" text-anchor="middle" font-size="13" fill="#64748b">随口一句 · 自动登记</text>
+        <text x="288" y="260" text-anchor="middle" font-size="11.5" fill="#c2410c">随口一句</text>
+        <text x="288" y="348" text-anchor="middle" font-size="11.5" fill="#c2410c">他的信息也进来</text>
+        <text x="622" y="213" text-anchor="middle" font-size="11" fill="#1441a8">AI 秒回</text>
 
-        <!-- 中心：行情助手 -->
-        <circle cx="500" cy="215" r="64" fill="url(#hubg)"/>
-        <text x="500" y="208" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">鱿</text>
-        <text x="500" y="240" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">行情助手</text>
-        <text x="500" y="306" text-anchor="middle" font-size="13" fill="#64748b">汇总 · 清洗 · 结构化 · 匹配</text>
+        <!-- 中心：AI 行情助手 -->
+        <circle cx="460" cy="280" r="66" fill="url(#hubg)"/>
+        <text x="460" y="272" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">鱿</text>
+        <text x="460" y="304" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">行情助手</text>
+        <text x="460" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#0f3185">AI 智能分析 · 主动撮合</text>
+        <text x="460" y="397" text-anchor="middle" font-size="11.5" fill="#64748b">越用越懂你的圈子</text>
 
-        <!-- 精准分发 -->
-        <path class="flow" d="M558,182 C660,142 742,110 800,93" fill="none" stroke="#1441a8" stroke-width="2.5" marker-end="url(#arrb)"/>
-        <path class="flow" d="M566,215 L800,215" fill="none" stroke="#1441a8" stroke-width="2.5" marker-end="url(#arrb)"/>
-        <path class="flow" d="M558,248 C660,288 742,320 800,337" fill="none" stroke="#1441a8" stroke-width="2.5" marker-end="url(#arrb)"/>
-        <text x="684" y="196" text-anchor="middle" font-size="13" fill="#64748b">精准分发 · 3 秒送达</text>
+        <!-- 四个用户：人人都只连助手 -->
+        <circle cx="150" cy="150" r="46" fill="#fff4ed" stroke="#e8590c" stroke-width="2"/>
+        <text x="150" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">用户A</text>
+        <text x="150" y="169" text-anchor="middle" font-size="11" fill="#64748b">报行情·发货盘</text>
 
-        <!-- 用户B / C / N -->
-        <circle cx="852" cy="85" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
-        <text x="852" y="81" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户B</text>
-        <text x="852" y="104" text-anchor="middle" font-size="11.5" fill="#64748b">查行情 · 3 秒答</text>
+        <circle cx="770" cy="150" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
+        <text x="770" y="146" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户B</text>
+        <text x="770" y="169" text-anchor="middle" font-size="11" fill="#64748b">查行情·3秒答</text>
 
-        <circle cx="852" cy="215" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
-        <text x="852" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户C</text>
-        <text x="852" y="234" text-anchor="middle" font-size="11.5" fill="#64748b">收撮合私信</text>
+        <circle cx="770" cy="410" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
+        <text x="770" y="406" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户C</text>
+        <text x="770" y="429" text-anchor="middle" font-size="11" fill="#64748b">收撮合私信</text>
 
-        <circle cx="852" cy="345" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
-        <text x="852" y="341" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户N</text>
-        <text x="852" y="364" text-anchor="middle" font-size="11.5" fill="#64748b">收每日早报</text>
+        <circle cx="150" cy="410" r="46" fill="#eff6ff" stroke="#1441a8" stroke-width="1.8"/>
+        <text x="150" y="406" text-anchor="middle" font-size="15" font-weight="700" fill="#1441a8">用户N</text>
+        <text x="150" y="429" text-anchor="middle" font-size="11" fill="#64748b">收每日早报</text>
       </svg>
 
-      <!-- 手机竖版 -->
-      <svg class="concept-svg concept-m" viewBox="0 0 330 566" role="img" aria-label="产品概念图（纵向）：用户A一句话报给行情助手，助手分发行情答案、撮合通知、每日早报给用户B、C、N">
+      <!-- 手机竖版：环绕闭环 -->
+      <svg class="concept-svg concept-m" viewBox="20 30 290 540" role="img" aria-label="产品概念图（纵向）：四个用户环绕AI行情助手，人人都只跟助手说话，AI分析撮合后精准送达每个人">
         <defs>
           <linearGradient id="hubg2" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#1a54c4"/><stop offset="1" stop-color="#0f3185"/>
           </linearGradient>
-          <marker id="arrb2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1441a8"/></marker>
-          <marker id="arro2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#e8590c"/></marker>
+          <marker id="arrb2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#1441a8"/></marker>
+          <marker id="arro2" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="7.5" markerHeight="7.5" orient="auto-start-reverse"><path d="M0,0L10,5L0,10z" fill="#e8590c"/></marker>
         </defs>
 
-        <circle cx="165" cy="70" r="42" fill="#fff4ed" stroke="#e8590c" stroke-width="2"/>
-        <text x="165" y="66" text-anchor="middle" font-size="15" font-weight="700" fill="#c2410c">用户A</text>
-        <text x="165" y="88" text-anchor="middle" font-size="11" fill="#64748b">报行情 · 发货盘</text>
+        <!-- 信息流入 -->
+        <path class="flow-in" d="M86,128 Q96,188 134,252" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro2)"/>
+        <path class="flow-in" d="M244,128 Q234,188 196,252" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro2)"/>
+        <path class="flow-in" d="M244,472 Q234,412 196,348" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro2)"/>
+        <path class="flow-in" d="M86,472 Q96,412 134,348" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro2)"/>
 
-        <path class="flow" d="M165,116 L165,198" fill="none" stroke="#e8590c" stroke-width="2.2" marker-end="url(#arro2)"/>
-        <text x="180" y="155" font-size="12" fill="#64748b">随口一句 · 自动登记</text>
+        <!-- AI 送达 -->
+        <path class="flow" d="M152,247 Q140,186 94,122" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb2)"/>
+        <path class="flow" d="M178,247 Q190,186 236,122" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb2)"/>
+        <path class="flow" d="M178,353 Q190,414 236,478" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb2)"/>
+        <path class="flow" d="M152,353 Q140,414 94,478" fill="none" stroke="#1441a8" stroke-width="2.6" marker-end="url(#arrb2)"/>
 
-        <circle cx="165" cy="266" r="58" fill="url(#hubg2)"/>
-        <text x="165" y="260" text-anchor="middle" font-size="26" font-weight="900" fill="#fff">鱿</text>
-        <text x="165" y="288" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">行情助手</text>
-        <text x="165" y="348" text-anchor="middle" font-size="11.5" fill="#64748b">汇总 · 结构化 · 匹配</text>
+        <!-- 中心：AI 行情助手 -->
+        <circle cx="165" cy="300" r="54" fill="url(#hubg2)"/>
+        <text x="165" y="291" text-anchor="middle" font-size="22" font-weight="900" fill="#fff">鱿</text>
+        <text x="165" y="313" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">行情助手</text>
+        <text x="165" y="335" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.92)">AI·分析·撮合</text>
 
-        <path class="flow" d="M148,362 C100,400 70,450 66,470" fill="none" stroke="#1441a8" stroke-width="2.2" marker-end="url(#arrb2)"/>
-        <path class="flow" d="M165,364 L165,468" fill="none" stroke="#1441a8" stroke-width="2.2" marker-end="url(#arrb2)"/>
-        <path class="flow" d="M182,362 C230,400 260,450 264,470" fill="none" stroke="#1441a8" stroke-width="2.2" marker-end="url(#arrb2)"/>
+        <!-- 四个用户 -->
+        <circle cx="75" cy="90" r="38" fill="#fff4ed" stroke="#e8590c" stroke-width="2"/>
+        <text x="75" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#c2410c">用户A</text>
+        <text x="75" y="104" text-anchor="middle" font-size="10" fill="#64748b">报行情/货盘</text>
 
-        <circle cx="62" cy="514" r="36" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
-        <text x="62" y="511" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1441a8">用户B</text>
-        <text x="62" y="530" text-anchor="middle" font-size="11" fill="#64748b">查行情</text>
+        <circle cx="255" cy="90" r="38" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
+        <text x="255" y="86" text-anchor="middle" font-size="13" font-weight="700" fill="#1441a8">用户B</text>
+        <text x="255" y="104" text-anchor="middle" font-size="10" fill="#64748b">查行情</text>
 
-        <circle cx="165" cy="514" r="36" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
-        <text x="165" y="511" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1441a8">用户C</text>
-        <text x="165" y="530" text-anchor="middle" font-size="11" fill="#64748b">收撮合</text>
+        <circle cx="255" cy="510" r="38" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
+        <text x="255" y="506" text-anchor="middle" font-size="13" font-weight="700" fill="#1441a8">用户C</text>
+        <text x="255" y="524" text-anchor="middle" font-size="10" fill="#64748b">收撮合</text>
 
-        <circle cx="268" cy="514" r="36" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
-        <text x="268" y="511" text-anchor="middle" font-size="13.5" font-weight="700" fill="#1441a8">用户N</text>
-        <text x="268" y="530" text-anchor="middle" font-size="11" fill="#64748b">收早报</text>
+        <circle cx="75" cy="510" r="38" fill="#eff6ff" stroke="#1441a8" stroke-width="1.6"/>
+        <text x="75" y="506" text-anchor="middle" font-size="13" font-weight="700" fill="#1441a8">用户N</text>
+        <text x="75" y="524" text-anchor="middle" font-size="10" fill="#64748b">收早报</text>
       </svg>
 
-      <div class="concept-cap">图里只画了 4 个人，实际是你的整个圈子——任何人随口报的一句行情、一个货盘，都会回流进助手的数据库。用的人越多，行情答案越准、撮合越快：你既在贡献信息，也在享受所有人的信息。</div>
+      <div class="concept-legend">
+        <span class="lg"><i class="lg-in"></i>人人都只跟助手说一句话</span>
+        <span class="lg"><i class="lg-out"></i>AI 分析后，精准送达每个人</span>
+      </div>
+
+      <div class="concept-cap">图上只画了 4 个人，但每个用户背后，都是他在鱿鱼产业里自己的圈子和能触达的范围。助手把这些圈子连成一张不断变大的网——你随口报的一句价，会抵达你永远不可能直接认识的人。用的人越多，这张网越大，你的触达就越远。</div>
     </div>
   </div>
 </section>
