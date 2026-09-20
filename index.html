@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鱿鱼行情助手 · 企微里的卖货参谋</title>
+<title>鱿鱼智能助手 · 品控·行情·供需 三合一</title>
 <style>
   :root{
     --primary:#1441a8;
@@ -184,6 +184,7 @@
     .scene-grid{grid-template-columns:minmax(0,1fr)}
     .value-grid{grid-template-columns:minmax(0,1fr)}
     .day-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+    .value-grid{grid-template-columns:minmax(0,1fr) !important}
         .layer{grid-template-columns:minmax(0,1fr);gap:6px}
     .cta{padding:48px 28px}
     section{padding:64px 0}
@@ -203,7 +204,7 @@
 <!-- 顶部导航 -->
 <div class="topbar">
   <div class="wrap">
-    <div class="brand"><div class="brand-avatar">鱿</div>鱿鱼行情助手</div>
+    <div class="brand"><div class="brand-avatar">🦑</div>鱿鱼智能助手</div>
     <a class="btn btn-primary btn-sm" href="#demo">申请试用</a>
   </div>
 </div>
@@ -212,13 +213,13 @@
 <header class="hero">
   <div class="wrap hero-grid">
     <div>
-      <div class="badge"><span class="dot"></span>企微里的专属行情参谋 · 已对接 50+ 产业者</div>
-      <h1>鱿鱼行情，<em>一句话</em>的事</h1>
-      <p class="sub">不用再翻几十个群、私聊问价。行情查询、供需登记、撮合匹配，全部在聊天框里完成——你只管谈生意，跑腿的事交给助手。</p>
+      <div class="badge"><span class="dot"></span>品控查图 · 行情问答 · 供需撮合 三合一 · 已对接 50+ 产业者</div>
+      <h1>查图·问价·找货，<em>一个助手</em>全搞定</h1>
+      <p class="sub">不用在品控、行情、供需三个入口来回切换。查货照片、问规格价格、登记买卖需求——一个助手全包，你只管谈生意。</p>
       <div class="hero-features">
-        <div class="hf"><span class="hf-ic">◆</span><span><b>即时行情</b>：规格价格、船号、到港动态，3 秒回复</span></div>
-        <div class="hf"><span class="hf-ic">◆</span><span><b>供需登记</b>：随口一句需求或货盘，自动结构化入库</span></div>
-        <div class="hf"><span class="hf-ic">◆</span><span><b>撮合推送</b>：匹配买家/卖家后主动私信，双方确认再对接</span></div>
+        <div class="hf"><span class="hf-ic">🔍</span><span><b>品控查图</b>：船号+规格一键搜质检照片和PDF报告</span></div>
+        <div class="hf"><span class="hf-ic">📊</span><span><b>即时行情</b>：规格价格、船号、到港动态，3 秒回复</span></div>
+        <div class="hf"><span class="hf-ic">🤝</span><span><b>供需撮合</b>：随口报需求或货盘，自动匹配推送，确认后对接</span></div>
       </div>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#demo">申请试用</a>
@@ -234,15 +235,15 @@
       <div class="chat-head">
         <div class="av">鱿</div>
         <div>
-          <div class="nm">鱿鱼行情助手</div>
+          <div class="nm">鱿鱼智能助手</div>
           <div class="st"><i></i>在线</div>
         </div>
       </div>
       <div class="chat-body">
-        <div class="msg user"><div class="bub">300-400g 原条现在什么价？</div></div>
-        <div class="msg bot"><div class="av">鱿</div><div class="bub">赤道原条 300-400g 当前 <b>***元/吨</b>，与上周基本持平，短期价格偏稳。今明两天到港 2 条船。</div></div>
-        <div class="msg user"><div class="bub">200-300g 呢？</div></div>
-        <div class="msg bot"><div class="av">鱿</div><div class="bub">200-300g 当前 <b>***元/吨</b>，小规格走货偏慢，采购端议价空间稍大。</div></div>
+        <div class="msg user"><div class="bub">宁泰75 大条</div></div>
+        <div class="msg bot"><div class="av">🦑</div><div class="bub">找到 <b>宁泰75</b> 大条相关质检图片 12 张，已生成 PDF 报告。<br>📊 赤道鱿鱼大条当前 <b>***元/吨</b>，近一周平稳。</div></div>
+        <div class="msg user"><div class="bub">300-400g 原条什么价？</div></div>
+        <div class="msg bot"><div class="av">🦑</div><div class="bub">赤道原条 300-400g 当前 <b>***元/吨</b>，与上周基本持平。今明两天到港 2 条船，规格偏大。</div></div>
       </div>
       <div class="chat-foot"><span>私聊 · 企业微信</span><span>3 秒内响应</span></div>
     </div>
@@ -278,7 +279,7 @@
         <!-- 中心：AI 行情助手 -->
         <circle cx="460" cy="280" r="66" fill="url(#hubg)"/>
         <text x="460" y="272" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">鱿</text>
-        <text x="460" y="304" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">行情助手</text>
+        <text x="460" y="304" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">智能助手</text>
         <text x="460" y="378" text-anchor="middle" font-size="13" font-weight="700" fill="#0f3185">AI 智能分析 · 主动撮合</text>
         <text x="460" y="397" text-anchor="middle" font-size="11.5" fill="#64748b">越用越懂你的私人助理</text>
 
@@ -333,7 +334,7 @@
         <!-- 中心：AI 行情助手 -->
         <circle cx="165" cy="300" r="54" fill="url(#hubg2)"/>
         <text x="165" y="291" text-anchor="middle" font-size="22" font-weight="900" fill="#fff">鱿</text>
-        <text x="165" y="313" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">行情助手</text>
+        <text x="165" y="313" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">智能助手</text>
         <text x="165" y="335" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.92)">AI·分析·撮合</text>
 
         <!-- 四个用户 -->
@@ -370,13 +371,40 @@
     </div>
 
     <div id="tabs">
-      <button class="tab on" data-s="s1">① 查行情</button>
-      <button class="tab" data-s="s2">② 报需求</button>
-      <button class="tab" data-s="s3">③ 发货盘</button>
-      <button class="tab" data-s="s4">④ 撮合通知</button>
-      <button class="tab" data-s="s5">⑤ 每日早报</button>
+      <button class="tab on" data-s="s0">① 品控查图</button>
+      <button class="tab" data-s="s1">② 查行情</button>
+      <button class="tab" data-s="s2">③ 报需求</button>
+      <button class="tab" data-s="s3">④ 发货盘</button>
+      <button class="tab" data-s="s4">⑤ 撮合通知</button>
+      <button class="tab" data-s="s5">⑥ 每日早报</button>
     </div>
 
+
+    <!-- 场景0：品控查图 -->
+    <div class="scene on" id="s0">
+      <div class="scene-grid">
+        <div class="card scene-note">
+          <h3>船号+规格，一键查质检照片和报告</h3>
+          <div class="desc">输入船号、规格，自动检索冷库质检图片并生成 PDF 报告。30+ 船号、数千条记录。</div>
+          <div class="ctx">背景：群聊或私聊，随时随地查货</div>
+          <div class="steps">
+            <div class="step"><i>1</i><span>发「船号 规格」如「宁泰75 大条」</span></div>
+            <div class="step"><i>2</i><span>自动生成图片列表+PDF报告</span></div>
+            <div class="step"><i>3</i><span>查完自动补一条该规格行情快照</span></div>
+          </div>
+        </div>
+        <div class="card scene-chat">
+          <div class="chat-head">
+            <div class="av">🦑</div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>群聊</div></div>
+          </div>
+          <div class="chat-body">
+            <div class="msg user"><div class="bub">宁泰75 大条</div></div>
+            <div class="msg bot"><div class="av">🦑</div><div class="bub">🔍 宁泰75 大条：找到 8 张质检图片，已生成 PDF 报告。<div class="quote">📊 <b>赤道鱿鱼大条</b> 当前 ***元/吨，近一周平稳。今明两天 2 条船到港。</div>回复「行情」查看更多规格价格。</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- 场景1：查行情 -->
     <div class="scene on" id="s1">
       <div class="scene-grid">
@@ -393,7 +421,7 @@
         <div class="card scene-chat">
           <div class="chat-head">
             <div class="av">鱿</div>
-            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>私聊</div></div>
           </div>
           <div class="chat-body">
             <div class="msg user"><div class="bub">赤道小小最近什么行情？去年到现在什么走势，手上有点库存，要不要动？</div></div>
@@ -421,7 +449,7 @@
         <div class="card scene-chat">
           <div class="chat-head">
             <div class="av">鱿</div>
-            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>私聊</div></div>
           </div>
           <div class="chat-body">
             <div class="msg user"><div class="bub">需要 500g+ 阿根廷鱿鱼筒，5 吨</div></div>
@@ -449,7 +477,7 @@
         <div class="card scene-chat">
           <div class="chat-head">
             <div class="av">鱿</div>
-            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊</div></div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>私聊</div></div>
           </div>
           <div class="chat-body">
             <div class="msg user"><div class="bub">我这里有一批阿根廷筒，500g+，5 吨左右，价格可谈</div></div>
@@ -477,7 +505,7 @@
         <div class="card scene-chat">
           <div class="chat-head">
             <div class="av">鱿</div>
-            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>私聊 · 主动通知</div></div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>私聊 · 主动通知</div></div>
           </div>
           <div class="chat-body">
             <div class="msg bot"><div class="av">鱿</div><div class="bub">有一条和你货源匹配的供需信息：<br>500g+ 阿根廷筒 · 5 吨 · 本周交货，需求方来自另一个群的买家（信息保密）。<br>是否愿意对接？</div></div>
@@ -504,7 +532,7 @@
         <div class="card scene-chat">
           <div class="chat-head">
             <div class="av">鱿</div>
-            <div><div class="nm">鱿鱼行情助手</div><div class="st"><i></i>定时推送 · 每日 8:00</div></div>
+            <div><div class="nm">鱿鱼智能助手</div><div class="st"><i></i>定时推送 · 每日 8:00</div></div>
           </div>
           <div class="chat-body">
             <div class="msg bot"><div class="av">鱿</div><div class="bub">早上好，今日鱿鱼行情简报：<br><b>价格变动</b>：400g+ 原条 ↑；300-400g 持平；200-300g ↓<br><b>到港动态</b>：今日 2 条船靠港（约 640 吨），400g+ 占比偏低<br><b>你关注的规格</b>：500g+ 阿根廷筒询盘增多，供应偏紧<br>回复规格名可查详细行情。</div></div>
@@ -524,27 +552,38 @@
       <div class="sec-label">核心价值</div>
       <h2>就做两件事，都很实在</h2>
     </div>
-    <div class="value-grid">
+    <div class="value-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
       <div class="card value-card reve">
-        <div class="ic ic-blue">◆</div>
-        <h3>行情问答</h3>
-        <p>把散落在几十个群和私聊里的价格、船号、到港信息汇总成一句话答案。业务员张口就问，3 秒得到专业回复。</p>
+        <div class="ic ic-blue">🔍</div>
+        <h3>品控查图</h3>
+        <p>船号+规格一键搜质检照片，自动生成 PDF 报告。30+ 船号、数千条品控记录。</p>
         <ul>
-          <li>规格价格即时查询，附近期成交参考</li>
+          <li>船号+规格即时检索质检图片</li>
+          <li>自动生成 PDF 报告</li>
+          <li>查完自动补行情快照</li>
+          <li>模糊船号纠错，宁太→宁泰</li>
+        </ul>
+      </div>
+      <div class="card value-card reve">
+        <div class="ic ic-blue">📊</div>
+        <h3>行情问答</h3>
+        <p>散落在几十个群里的价格、船号、到港信息汇总成一句话答案。张口就问，3 秒回复。</p>
+        <ul>
+          <li>规格价格即时查询+近期成交参考</li>
           <li>船号、批次、到港动态一问便知</li>
           <li>趋势研判辅助报价决策</li>
           <li>使用越多，答案越贴合本群行情</li>
         </ul>
       </div>
       <div class="card value-card reve">
-        <div class="ic ic-orange">◆</div>
-        <h3>供需引擎</h3>
-        <p>业务员在正常聊天中随口提到需求和货盘，助手自动登记、双向匹配、确认后对接，撮合发生在你看得见的地方。</p>
+        <div class="ic ic-orange">🤝</div>
+        <h3>供需撮合</h3>
+        <p>聊天中随口提的需求和货盘自动登记，确认后双向匹配推送。撮合发生在后台，只通知结果。</p>
         <ul>
-          <li>需求与货盘自然语言提取，自动结构化</li>
-          <li>规格 + 数量 + 时间三维匹配</li>
-          <li>定向通知匹配方，回报意向数量</li>
-          <li>双方确认后才对接，信息不公开挂群</li>
+          <li>自然对话提取供需，无需填表</li>
+          <li>品种+规格+数量三要素确认再推送</li>
+          <li>定向通知匹配方，回报意向数</li>
+          <li>双方确认后才对接，信息不公开</li>
         </ul>
       </div>
     </div>
@@ -558,26 +597,31 @@
       <div class="sec-label">使用路径</div>
       <h2>业务员的一天</h2>
     </div>
-    <div class="day-grid">
+    <div class="day-grid" style="grid-template-columns:repeat(5,minmax(0,1fr))">
       <div class="card day-card reve">
         <div class="t">08:00</div>
         <h3>早报</h3>
-        <p>一条简报看完昨日价格变动和到港动态，今天该报什么价心里有数。</p>
+        <p>一条简报看完昨日价格变动和到港动态，心里有数。</p>
       </div>
       <div class="card day-card reve">
         <div class="t">09:00-18:00</div>
-        <h3>查行情 · 报需求</h3>
-        <p>客户问价随手转给助手；客户要货随口一说，等助手带报价回来。</p>
+        <h3>查品控</h3>
+        <p>客户要看货，发「船号+规格」秒回质检图片和PDF。</p>
+      </div>
+      <div class="card day-card reve">
+        <div class="t">09:00-18:00</div>
+        <h3>查行情</h3>
+        <p>问规格价格、走势、库存建议，随问随答。</p>
       </div>
       <div class="card day-card reve">
         <div class="t">随时</div>
-        <h3>发货盘</h3>
-        <p>有货要出？说出规格数量，助手通知匹配买家，回你意向名单。</p>
+        <h3>报需求/发货盘</h3>
+        <p>想买想卖随口说，助手自动提取登记撮合。</p>
       </div>
       <div class="card day-card reve">
-        <div class="t">撮合时</div>
-        <h3>被动等通知</h3>
-        <p>匹配上了助手主动私信，双方确认拉群，你只管谈价。</p>
+        <div class="t">被动</div>
+        <h3>等通知</h3>
+        <p>匹配上了主动私信，确认后对接，只管谈价。</p>
       </div>
     </div>
   </div>
@@ -592,18 +636,18 @@
     </div>
     <div class="card arch reve">
       <div class="layer">
-        <div class="ln">数据层<span>行情机器人已验证</span></div>
-        <p>企微机器人监听各业务群消息，7×24 小时采集、清洗价格与供需信息，输出结构化行情数据。</p>
+        <div class="ln">数据层<span>三大数据源</span></div>
+        <p>Cloudreve 品控图片库（30+ 船号）+ 多源行情采集（丰链/清言/公众号）+ 供需引擎（对话提取+画像分层），输出结构化数据。</p>
       </div>
       <div class="layer">
         <div class="ln">智能层<span>LLM 应用</span></div>
-        <p>自然语言理解（口语化行情查询、供需提取）+ RAG 行情问答 + 数据分析（价格趋势、供需密度、到港动态）。</p>
+        <p>自然语言路由（品控/行情/供需三板块智能分流）+ RAG 行情问答 + 供需意图提取 + 船号模糊纠错 + 画像自学习。</p>
       </div>
       <div class="layer">
-        <div class="ln">应用层<span>业务员直接用</span></div>
-        <p>群聊@问答 · 私聊助手 · 每日简报 · 匹配推送 · 撮合对接，全部在企微聊天框里完成。</p>
+        <div class="ln">应用层<span>一个入口全搞定</span></div>
+        <p>群聊@问答 · 私聊助手 · 品控查图+PDF · 行情查询 · 供需登记 · 撮合推送 · 每日早报——全部在企微聊天框里完成。</p>
       </div>
-      <div class="arch-note">从行情问答开始就能用；供需登记、撮合推送随使用逐步开放——越早接入，行情答案越贴合你的圈子。</div>
+      <div class="arch-note">查一张图、问一个价、报一条需求——三个板块后台联动：查图记录偏好 → 行情精准推送 → 供需匹配反哺。越用越懂你。</div>
     </div>
   </div>
 </section>
@@ -612,15 +656,15 @@
 <section style="padding-top:0">
   <div class="wrap">
     <div class="cta">
-      <h2>把翻几十个群问价的时间，省下来多谈几单生意</h2>
+      <h2>查图·问价·找货，一个助手全包，省下时间多谈几单</h2>
       <p>首批体验名额开放中 · 接入 1-2 个业务员群 · 10 位业务员先行体验</p>
       <a class="cta-btn" href="#demo">立即申请试用</a>
-      <div class="cta-note">在企微里找到鱿鱼行情助手，私聊或群里@它都行，从明天早上的第一份行情日报开始</div>
+      <div class="cta-note">在企微里找到鱿鱼智能助手，私聊或群里@它都行，从明天早上的第一份行情日报开始</div>
     </div>
   </div>
 </section>
 
-<footer>鱿鱼行情助手 · B2B 渔业业务员端 · 2026年9月 · 基于现有行情机器人数据基础设施</footer>
+<footer>鱿鱼智能助手 · B2B 渔业业务员端 · 2026年9月 · 基于现有行情机器人数据基础设施</footer>
 
 <script>
   var tabs = document.querySelectorAll('#tabs .tab');
