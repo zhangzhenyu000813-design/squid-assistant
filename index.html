@@ -121,7 +121,7 @@
   .value-card li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--primary);position:absolute;left:2px;top:11px}
 
   /* ===== 一天时间轴 ===== */
-  .day-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+  .day-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:20px}
   .day-card{padding:22px}
   .day-card .t{font-size:12.5px;font-weight:700;color:var(--primary);letter-spacing:.05em}
   .day-card h3{margin:6px 0 8px;font-size:16px}
@@ -260,14 +260,14 @@
     </div>
     <div class="card concept-stage reve">
       <!-- 桌面横版：环绕闭环 -->
-      <svg class="concept-svg concept-d" viewBox="40 60 840 420" role="img" aria-label="产品概念图：用户A、B、C、N环绕AI行情助手，人人都只跟助手说话——A问行情、B发货盘需求、C随口报价、N报到货价，AI分析撮合后把B的货盘转给A、撮合私信、秒回答案、每日早报送达每个人">
+      <svg class="concept-svg concept-d" viewBox="40 60 840 420" role="img" aria-label="产品概念图：用户A、B、C、N环绕AI智能助手，人人都只跟助手说话——A问行情、B发货盘需求、C随口报价、N报到货价，AI分析撮合后把B的货盘转给A、撮合私信、秒回答案、每日早报送达每个人">
         <defs>
           <linearGradient id="hubg" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#1a54c4"/><stop offset="1" stop-color="#0f3185"/>
           </linearGradient>
         </defs>
 
-                <path class="flow-in" id="dAi" d="M188.0,176.0 Q285.0,250.0 385.1,267.3" fill="none" stroke="#e8590c" stroke-width="2.2"/><path id="dAi-t" d="M188.0,176.0 Q285.0,250.0 395.0,269.0" fill="none" stroke="none"/><polygon points="395.0,269.0 384.4,271.8 385.9,262.9" fill="#e8590c"/><text class="arc-lb" font-size="11" fill="#c2410c"><textPath href="#dAi-t" startOffset="36%">A 问行情</textPath></text>
+                <path class="flow-in" id="dAi" d="M188.0,176.0 Q285.0,250.0 385.1,267.3" fill="none" stroke="#e8590c" stroke-width="2.2"/><path id="dAi-t" d="M188.0,176.0 Q285.0,250.0 395.0,269.0" fill="none" stroke="none"/><polygon points="395.0,269.0 384.4,271.8 385.9,262.9" fill="#e8590c"/><text class="arc-lb" font-size="11" fill="#c2410c"><textPath href="#dAi-t" startOffset="36%">A 查品控</textPath></text>
         <path class="flow" id="dAo" d="M406.0,242.0 Q300.0,175.0 204.8,159.8" fill="none" stroke="#1441a8" stroke-width="2.6"/><path id="dAo-t" d="M195.0,158.0 Q300.0,175.0 406.0,242.0" fill="none" stroke="none"/><polygon points="195.0,158.0 205.6,155.3 204.1,164.2" fill="#1441a8"/><text class="arc-lb" font-size="11" fill="#1441a8"><textPath href="#dAo-t" startOffset="27%">B 的货盘转给 A</textPath></text>
         <path class="flow-in" id="dBi" d="M725.0,159.0 Q603.0,170.0 522.2,236.2" fill="none" stroke="#e8590c" stroke-width="2.2"/><path id="dBi-t" d="M514.0,242.0 Q603.0,170.0 725.0,159.0" fill="none" stroke="none"/><polygon points="514.0,242.0 519.6,232.6 524.8,239.9" fill="#e8590c"/><text class="arc-lb" font-size="11" fill="#c2410c"><textPath href="#dBi-t" startOffset="35%">B 发货盘需求</textPath></text>
         <path class="flow" id="dBo" d="M525.0,269.0 Q640.0,246.0 723.7,181.6" fill="none" stroke="#1441a8" stroke-width="2.6"/><path id="dBo-t" d="M525.0,269.0 Q640.0,246.0 732.0,176.0" fill="none" stroke="none"/><polygon points="732.0,176.0 726.3,185.4 721.2,177.9" fill="#1441a8"/><text class="arc-lb" font-size="11" fill="#1441a8"><textPath href="#dBo-t" startOffset="28%">A 感兴趣，撮合私信</textPath></text>
@@ -276,7 +276,7 @@
         <path class="flow-in" id="dNi" d="M188.0,384.0 Q285.0,310.0 385.1,292.7" fill="none" stroke="#e8590c" stroke-width="2.2"/><path id="dNi-t" d="M188.0,384.0 Q285.0,310.0 395.0,291.0" fill="none" stroke="none"/><polygon points="395.0,291.0 385.9,297.1 384.4,288.2" fill="#e8590c"/><text class="arc-lb" font-size="11" fill="#c2410c"><textPath href="#dNi-t" startOffset="36%">N 报到货价</textPath></text>
         <path class="flow" id="dNo" d="M406.0,318.0 Q300.0,385.0 204.8,400.2" fill="none" stroke="#1441a8" stroke-width="2.6"/><path id="dNo-t" d="M195.0,402.0 Q300.0,385.0 406.0,318.0" fill="none" stroke="none"/><polygon points="195.0,402.0 204.1,395.8 205.6,404.7" fill="#1441a8"/><text class="arc-lb" font-size="11" fill="#1441a8"><textPath href="#dNo-t" startOffset="37%">收每日早报</textPath></text>
 
-        <!-- 中心：AI 行情助手 -->
+        <!-- 中心：AI 智能助手 -->
         <circle cx="460" cy="280" r="66" fill="url(#hubg)"/>
         <text x="460" y="272" text-anchor="middle" font-size="30" font-weight="900" fill="#fff">鱿</text>
         <text x="460" y="304" text-anchor="middle" font-size="16" font-weight="700" fill="#fff">智能助手</text>
@@ -298,7 +298,7 @@
       </svg>
 
       <!-- 手机竖版：环绕闭环 -->
-      <svg class="concept-svg concept-m" viewBox="20 30 290 540" role="img" aria-label="产品概念图（纵向）：四个用户环绕AI行情助手——A问行情、B发货盘需求、C随口报价、N报到货价，AI撮合后转达双方">
+      <svg class="concept-svg concept-m" viewBox="20 30 290 540" role="img" aria-label="产品概念图（纵向）：四个用户环绕AI智能助手——A问行情、B发货盘需求、C随口报价、N报到货价，AI撮合后转达双方">
         <defs>
           <linearGradient id="hubg2" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#1a54c4"/><stop offset="1" stop-color="#0f3185"/>
@@ -331,7 +331,7 @@
         <text class="arc-lb" x="243" y="398" font-size="9.5" fill="#1441a8">AI 秒答</text>
         <text class="arc-lb" x="243" y="430" font-size="9.5" fill="#c2410c">C 随口报价</text>
 
-        <!-- 中心：AI 行情助手 -->
+        <!-- 中心：AI 智能助手 -->
         <circle cx="165" cy="300" r="54" fill="url(#hubg2)"/>
         <text x="165" y="291" text-anchor="middle" font-size="22" font-weight="900" fill="#fff">鱿</text>
         <text x="165" y="313" text-anchor="middle" font-size="13.5" font-weight="700" fill="#fff">智能助手</text>
@@ -356,7 +356,7 @@
         <span class="lg"><i class="lg-out"></i>AI 分析后，精准送达每个人</span>
       </div>
 
-      <div class="concept-cap">图上只画了 4 个人，实际上，每个用户都是行情助手的触达范围——助手把资源扩大：你随口报的一句价、一个货盘，会抵达你永远不可能直接认识的人。用的人越多，你手上的资源就越多。</div>
+      <div class="concept-cap">图上只画了 4 个人，实际上，每个用户都是智能助手的触达范围——助手把资源扩大：你随口报的一句价、一个货盘，会抵达你永远不可能直接认识的人。用的人越多，你手上的资源就越多。</div>
     </div>
   </div>
 </section>
@@ -550,7 +550,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="sec-label">核心价值</div>
-      <h2>就做两件事，都很实在</h2>
+      <h2>就做三件事，都很实在</h2>
     </div>
     <div class="value-grid" style="grid-template-columns:repeat(3,minmax(0,1fr))">
       <div class="card value-card reve">
@@ -664,7 +664,7 @@
   </div>
 </section>
 
-<footer>鱿鱼智能助手 · B2B 渔业业务员端 · 2026年9月 · 基于现有行情机器人数据基础设施</footer>
+<footer>鱿鱼智能助手 · B2B 渔业业务员端 · 2026年9月 · 品控查图 + 行情问答 + 供需撮合 三合一</footer>
 
 <script>
   var tabs = document.querySelectorAll('#tabs .tab');
